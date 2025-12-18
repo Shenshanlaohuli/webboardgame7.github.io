@@ -248,8 +248,12 @@
             font-size: 2.4rem; /* Digital-7 较瘦，可以大一点 */
             font-weight: 400; /* Digital-7 默认权重即可 */
             line-height: 1;
+<<<<<<< HEAD
             margin-top: 4px;
             font-style: italic;
+=======
+            margin-top: 2px;
+>>>>>>> d7729954c8108055e0e3a2a242fa249dcc4f4803
         }
 
         /* Hint Style - Below Number */
@@ -372,7 +376,11 @@
         
         .col-name { text-align: left; width: 25%; font-weight: bold; }
         .col-stats { text-align: center; width: 55%; color: #bdc3c7; }
+<<<<<<< HEAD
         .col-score { text-align: right; width: 20%; font-family: 'Digital-7 Mono'; font-size: 1.3rem; font-style: italic;}
+=======
+        .col-score { text-align: right; width: 20%; font-family: 'Orbitron'; font-size: 1.1rem; }
+>>>>>>> d7729954c8108055e0e3a2a242fa249dcc4f4803
 
         .status-badge { 
             font-size: 0.7rem; padding: 1px 4px; border-radius: 3px; 
@@ -516,7 +524,10 @@
             let opts = [{ n:val, c:0, r:false }];
             switch(val) {
                 case 0: opts.push({ n:8, c:1 }); break;
+<<<<<<< HEAD
                 // 1->9 cost is 4 
+=======
+>>>>>>> d7729954c8108055e0e3a2a242fa249dcc4f4803
                 case 1: opts.push({ n:7, c:1 }, { n:3, c:3 }, { n:6, c:2 }, { n:8, c:5 }, { n:9, c:4 }); break;
                 case 2: opts.push({ n:8, c:2 }); break;
                 case 3: opts.push({ n:6, c:1, r:true }, { n:9, c:1 }, { n:8, c:2 }); break;
@@ -633,6 +644,7 @@
         }
         function closeModal() { document.getElementById('modal-overlay').style.display = 'none'; }
 
+        // --- Improved AI Logic ---
         function aiPlay(p) {
             // 1. Get valid cards
             let validIdx = p.hand.map((_,i)=>i);
@@ -662,17 +674,34 @@
                     const isRotated = o.rotate;
                     
                     // Predict Win/Loss
+<<<<<<< HEAD
                     let willWin = false;
                     
                     if (gameState.tableCards.length === 0) {
                         if (c.suit === 'Purple') willWin = true; 
                         else if (finalValue >= 7) willWin = true;
                     } else {
+=======
+                    // Logic: Estimate if this card is strong enough to win.
+                    let willWin = false;
+                    
+                    if (gameState.tableCards.length === 0) {
+                        // Leading: 
+                        // High card (8,9) likely to win. Low card (0-3) likely to lose.
+                        // Trump (Purple) likely to win.
+                        if (c.suit === 'Purple') willWin = true; 
+                        else if (finalValue >= 7) willWin = true;
+                        // Else assume loss for calculation safety, but 50/50 for mid cards
+                    } else {
+                        // Following:
+                        // Find current winner on table
+>>>>>>> d7729954c8108055e0e3a2a242fa249dcc4f4803
                         let currentWinner = null;
                         let maxVal = -1;
                         const trumps = gameState.tableCards.filter(tc => tc.c.suit === 'Purple');
                         
                         if (trumps.length > 0) {
+<<<<<<< HEAD
                             currentWinner = trumps.reduce((prev, curr) => curr.mod >= prev.mod ? curr : prev);
                             maxVal = currentWinner.mod;
                             if (c.suit === 'Purple') {
@@ -683,27 +712,58 @@
                         } else {
                             const lead = gameState.trickStarterSuit;
                             const leads = gameState.tableCards.filter(tc => tc.c.suit === lead);
+=======
+                            // Trump played
+                            currentWinner = trumps.reduce((prev, curr) => curr.mod >= prev.mod ? curr : prev);
+                            maxVal = currentWinner.mod;
+                            
+                            if (c.suit === 'Purple') {
+                                // We are also playing trump
+                                if (finalValue >= maxVal) willWin = true; // Tie or higher wins (playing last)
+                            } else {
+                                // We are not playing trump, we lose
+                                willWin = false;
+                            }
+                        } else {
+                            // No trump played yet
+                            const lead = gameState.trickStarterSuit;
+                            const leads = gameState.tableCards.filter(tc => tc.c.suit === lead);
+                            // It's possible leads is empty if someone sloughed immediately (rare), but standard logic:
+>>>>>>> d7729954c8108055e0e3a2a242fa249dcc4f4803
                             if (leads.length > 0) {
                                 currentWinner = leads.reduce((prev, curr) => curr.mod >= prev.mod ? curr : prev);
                                 maxVal = currentWinner.mod;
                             }
                             
                             if (c.suit === 'Purple') {
+<<<<<<< HEAD
                                 willWin = true; 
                             } else if (c.suit === lead) {
                                 if (finalValue >= maxVal) willWin = true;
                             } else {
                                 willWin = false; 
+=======
+                                willWin = true; // We trumped
+                            } else if (c.suit === lead) {
+                                if (finalValue >= maxVal) willWin = true;
+                            } else {
+                                willWin = false; // Slough
+>>>>>>> d7729954c8108055e0e3a2a242fa249dcc4f4803
                             }
                         }
                     }
 
                     // --- Scoring Heuristic ---
+<<<<<<< HEAD
+=======
+                    
+>>>>>>> d7729954c8108055e0e3a2a242fa249dcc4f4803
                     const predictedFuel = currentFuel - cost;
                     const predictedTricks = currentTricks + (willWin ? 1 : 0);
                     const gap = predictedFuel - predictedTricks;
                     
                     let score = 0;
+<<<<<<< HEAD
                     score -= Math.abs(gap) * 10; 
 
                     if (cardsRemaining <= 2) {
@@ -718,6 +778,42 @@
                     }
 
                     if (cost === 0 && !isRotated) score += 1;
+=======
+
+                    // Goal: Gap should be 0.
+                    // Penalty for Gap distance
+                    score -= Math.abs(gap) * 10; 
+
+                    // HEAVY Weighting for End Game (Last 2 cards)
+                    if (cardsRemaining <= 2) {
+                        // If we have excess fuel (Gap > 0), we MUST burn it.
+                        if (gap > 0 && cost > 0) {
+                            score += cost * 50; // Huge bonus for spending fuel
+                        }
+                        
+                        // If we are winning too much (Gap < 0), we MUST lose.
+                        if (gap < 0 && !willWin) {
+                            score += 100; // Huge bonus for losing trick
+                        }
+
+                        // Prioritize Perfect Trip (Gap 0) above all
+                        if (gap === 0) score += 500;
+                    } 
+                    else {
+                        // Early/Mid Game: Just try to stay balanced
+                        // Slight preference for winning if balanced, to build score
+                        if (gap === 0 && willWin) score += 5;
+                        
+                        // Slight penalty for high cost early game to save options, unless gap dictates
+                        if (gap > 0) score += cost * 2; // Burn if heavy
+                        else score -= cost * 1; // Save if low
+                    }
+
+                    // Tie-breaker: Prefer playing valid cards without mod if score same
+                    if (cost === 0 && !isRotated) score += 1;
+                    
+                    // Random noise to prevent robotic predictability
+>>>>>>> d7729954c8108055e0e3a2a242fa249dcc4f4803
                     score += Math.random();
 
                     if (score > bestScore) {
@@ -727,6 +823,10 @@
                 });
             });
 
+<<<<<<< HEAD
+=======
+            // Fallback (shouldn't happen)
+>>>>>>> d7729954c8108055e0e3a2a242fa249dcc4f4803
             if (!bestMove) {
                 bestMove = { i: validIdx[0], opt: { newValue: p.hand[validIdx[0]].value, cost: 0, rotate: false } };
             }
@@ -848,7 +948,11 @@
                     <div class="opponent-card ${active?'active-turn':''}">
                         <div>${p.name}</div>
                         <div style="display:flex; justify-content:center; align-items:center; gap:3px;">
+<<<<<<< HEAD
                             <span style="font-family:'Digital-7 Mono'; font-style:italic; color:#e67e22; font-weight:bold;">${p.fuel}</span>
+=======
+                            <span style="font-family:'Orbitron'; color:#e67e22; font-weight:bold;">${p.fuel}</span>
+>>>>>>> d7729954c8108055e0e3a2a242fa249dcc4f4803
                             <div style="display:flex;">${dots}</div>
                         </div>
                         <div style="margin-top:2px; font-size:0.7rem;">牌:${p.hand.length} 墩:${p.tricksWon} 棒:${p.collectedRods}</div>
