@@ -3,19 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<<<<<<< HEAD
     <title>Trick to the Future</title>
     
     <style>
         /* 引入 DS-Digital 字体 (更标准的 7 段数码管) */
         @import url('https://fonts.cdnfonts.com/css/ds-digital');
-=======
-    <title>Trick to the Future通往未来的吃墩</title>
-    
-    <style>
-        /* 引入 Digital-7 字体 */
-        @import url('https://fonts.cdnfonts.com/css/digital-7-mono');
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
         /* 引入界面UI字体 */
         @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap');
 
@@ -36,8 +28,7 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            /* 兼容性高度设置 */
-            height: 100vh; 
+            height: 100vh;
             height: 100dvh; 
             overflow: hidden;
             user-select: none;
@@ -45,11 +36,7 @@
         }
 
         .digital-font {
-<<<<<<< HEAD
             font-family: 'DS-Digital', sans-serif;
-=======
-            font-family: 'Digital-7 Mono', monospace;
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
             letter-spacing: 1px;
             font-style: italic;
         }
@@ -64,7 +51,6 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             background: rgba(32, 44, 57, 0.98);
-<<<<<<< HEAD
             z-index: 1000;
             padding: 20px;
             box-sizing: border-box;
@@ -73,30 +59,14 @@
 
         h1 { 
             font-family: 'DS-Digital', sans-serif;
-=======
-            z-index: 1000; /* 最高层级，确保不被遮挡 */
-            padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto; /* 防止内容过多无法点击 */
-        }
-
-        h1 { 
-            font-family: 'Digital-7 Mono', sans-serif;
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
             margin-bottom: 1rem; 
             text-transform: uppercase; 
             text-align: center; 
             color: var(--yellow);
-<<<<<<< HEAD
             font-size: 2.5rem; /* DS-Digital 略小，调大 */
             line-height: 1.2;
             font-style: italic;
             font-weight: bold;
-=======
-            font-size: 2.2rem;
-            line-height: 1.4;
-            font-style: italic;
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
         }
 
         .rules-box {
@@ -119,15 +89,9 @@
         .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; width: 100%; }
         
         .start-btn {
-<<<<<<< HEAD
             font-family: 'DS-Digital', sans-serif;
             padding: 15px 30px;
             font-size: 1.5rem;
-=======
-            font-family: 'Digital-7 Mono', sans-serif;
-            padding: 15px 30px;
-            font-size: 1.4rem;
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
             cursor: pointer;
             background: var(--blue);
             border: none;
@@ -232,11 +196,7 @@
             border-radius: 50%;
             width: 20px; height: 20px;
             display: flex; align-items: center; justify-content: center;
-<<<<<<< HEAD
             font-size: 0.8rem; font-weight: bold; font-family: 'DS-Digital', sans-serif;
-=======
-            font-size: 0.8rem; font-weight: bold; font-family: 'Digital-7 Mono', sans-serif;
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
             z-index: 10;
         }
         
@@ -282,15 +242,9 @@
         }
 
         .card-main-num {
-<<<<<<< HEAD
             font-family: 'DS-Digital', sans-serif; 
             font-size: 2.6rem; /* DS-Digital 略小 */
             font-weight: bold;
-=======
-            font-family: 'Digital-7 Mono', monospace; 
-            font-size: 2.4rem;
-            font-weight: 400;
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
             line-height: 1;
             margin-top: 4px;
             font-style: italic;
@@ -381,11 +335,7 @@
             cursor: pointer; border: 1px solid rgba(255,255,255,0.2); min-width: 50px;
         }
         
-<<<<<<< HEAD
         .option-val { font-family: 'DS-Digital', sans-serif; font-size: 1.6rem; font-weight: bold; font-style: italic;}
-=======
-        .option-val { font-family: 'Digital-7 Mono', sans-serif; font-size: 1.5rem; font-weight: bold; font-style: italic;}
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
 
         .cancel-btn { background: rgba(231, 76, 60, 0.8); padding: 8px; font-size: 0.8rem; width: 100%; }
 
@@ -421,11 +371,7 @@
         
         .col-name { text-align: left; width: 25%; font-weight: bold; }
         .col-stats { text-align: center; width: 55%; color: #bdc3c7; }
-<<<<<<< HEAD
         .col-score { text-align: right; width: 20%; font-family: 'DS-Digital'; font-size: 1.4rem; font-style: italic; font-weight: bold;}
-=======
-        .col-score { text-align: right; width: 20%; font-family: 'Digital-7 Mono'; font-size: 1.3rem; font-style: italic;}
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
 
         .status-badge { 
             font-size: 0.7rem; padding: 1px 4px; border-radius: 3px; 
@@ -450,8 +396,8 @@
             <strong>修改数值：</strong> 出牌时可消耗燃料棒或旋转卡牌来改变数字大小。<br>
             <strong>计分：</strong>
             <ul>
-                <li><span style="color:#2ecc71">完美之旅</span>: 墩数 = 燃料 (4分/墩) (2分/燃料棒)</li>
-                <li><span style="color:#3498db">成功之旅</span>: 燃料 > 墩数 (2分/墩) (1分/燃料棒)</li>
+                <li><span style="color:#2ecc71">完美之旅</span>: 墩数 = 燃料 (4分/墩)</li>
+                <li><span style="color:#3498db">成功之旅</span>: 燃料 > 墩数 (2分/墩)</li>
                 <li><span style="color:#e74c3c">迷失时间</span>: 燃料 < 墩数 (0分)</li>
                 <li><span style="color:#e74c3c">时光机失灵</span>: 0 墩 (每有1个空置的燃料槽+3分)</li>
             </ul>
@@ -569,7 +515,6 @@
             let opts = [{ n:val, c:0, r:false }];
             switch(val) {
                 case 0: opts.push({ n:8, c:1 }); break;
-<<<<<<< HEAD
                 // 1->9 cost is 2 (Logic: 1=| | , 9=|_| + top + mid + bot. 
                 // Correction: 1 is right side. 9 is (top, TL, TR, mid, BR, bot). 
                 // 1 has TR, BR. 9 needs Top, TL, Mid, Bot. That is 4.
@@ -578,9 +523,6 @@
                 // Diff: Top and Bot. That is 2. My previous code had 4->9 as 2.
                 // PROMPT: "数字4需要使用2根燃料棒才能转换成数字9"
                 // My Code below for 4->9 is c:2. Correct.
-=======
-                // 1->9 cost is 4 
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
                 case 1: opts.push({ n:7, c:1 }, { n:3, c:3 }, { n:6, c:2 }, { n:8, c:5 }, { n:9, c:4 }); break;
                 case 2: opts.push({ n:8, c:2 }); break;
                 case 3: opts.push({ n:6, c:1, r:true }, { n:9, c:1 }, { n:8, c:2 }); break;
@@ -880,11 +822,7 @@
             
             let h = '<table class="score-list">';
             gameState.players.forEach(p => {
-<<<<<<< HEAD
                 h += `<tr><td style="padding:10px; color:${p.isHuman?'#2ecc71':'#ccc'}">${p.name}</td><td style="font-size:1.5rem; font-family:'DS-Digital'; font-style:italic; text-align:right;">${p.totalScore}</td></tr>`;
-=======
-                h += `<tr><td style="padding:10px; color:${p.isHuman?'#2ecc71':'#ccc'}">${p.name}</td><td style="font-size:1.5rem; font-family:'Digital-7 Mono'; font-style:italic; text-align:right;">${p.totalScore}</td></tr>`;
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
             });
             h += '</table>';
             document.getElementById('final-scores').innerHTML = h;
@@ -905,11 +843,7 @@
                     <div class="opponent-card ${active?'active-turn':''}">
                         <div>${p.name}</div>
                         <div style="display:flex; justify-content:center; align-items:center; gap:3px;">
-<<<<<<< HEAD
                             <span style="font-family:'DS-Digital'; font-style:italic; color:#e67e22; font-weight:bold;">${p.fuel}</span>
-=======
-                            <span style="font-family:'Digital-7 Mono'; font-style:italic; color:#e67e22; font-weight:bold;">${p.fuel}</span>
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
                             <div style="display:flex;">${dots}</div>
                         </div>
                         <div style="margin-top:2px; font-size:0.7rem;">牌:${p.hand.length} 墩:${p.tricksWon} 棒:${p.collectedRods}</div>
@@ -966,11 +900,7 @@
                 const potentialVals = [...new Set(allOpts.filter(o => o.newValue !== c.value).map(o => o.newValue))].sort((a,b)=>a-b);
                 const hintStr = potentialVals.join(',');
 
-<<<<<<< HEAD
                 // Safer onclick string
-=======
-                // Use safer string concatenation for onclick
->>>>>>> 9daf70b0c4f1138caf6711760724989ef3f567d6
                 handEl.innerHTML += `
                     <div class="card suit-${c.suit} ${dim}" onclick="${click ? 'handleHumanCardClick(' + idx + ')' : ''}">
                         <span class="suit-icon">${SUIT_NAMES[c.suit]}</span>
